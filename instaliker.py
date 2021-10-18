@@ -10,7 +10,7 @@ from datetime import datetime, timedelta
 loginform=False
 passwordform=False
 spam = False
-base = input('Name of basefile (example \'basename.csv\'): ') or 'base.csv'
+base = 'base.csv'
 counter = 0
 counterLook = 0
 XInstagramAJAX = csrftoken = ds_user_id = sessionid = ig_did = mid = ig_nrcb = shbid = shbts = rur = XIGWWWClaim = False
