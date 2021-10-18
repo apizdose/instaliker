@@ -17,7 +17,7 @@ XInstagramAJAX = csrftoken = ds_user_id = sessionid = ig_did = mid = ig_nrcb = s
 XIGAppID = "1217981644879628"
 print('IGAppid for your version is: '+XIGAppID)
 likable = False
-usrname = False
+photocode = False
 
 if os.path.isfile('login.txt'):
     logins={}
@@ -131,8 +131,8 @@ def getcoo():
 ################################################################################        	
 
 def checkuser(username):
-    global usrname
-    usrname = username
+    global photocode
+    photocode = False
     media_id=''
     global likable
     likable = False
@@ -152,7 +152,7 @@ def checkuser(username):
         'Sec-Fetch-Site': 'same-origin',
         'Sec-Fetch-Mode': 'cors',
         'Sec-Fetch-Dest': 'empty',
-        'Referer': f'https://www.instagram.com/{usrname}/',
+        'Referer': f'https://www.instagram.com/{username}/',
         'Accept-Encoding': 'gzip, deflate, br',
         'Accept-Language': 'en-US,en;q=0.9,ru;q=0.8',
         'Cookie': f'mid={mid}; ig_did={ig_did}; shbid={shbid}; shbts={shbts}; rur={rur}; csrftoken={csrftoken}; ds_user_id={ds_user_id}; sessionid={sessionid}',
@@ -201,7 +201,9 @@ def checkuser(username):
             print('@> '+username+' >>>is not valid account!...... LOOKING   '+str(counterLook))
     except: print(username+'  page not found')
     if likable:
-        media_id=data['graphql']['user']['edge_owner_to_timeline_media']['edges'][random.randint(0,3)]['node']['id']
+	photonum=random.randint(0,3)
+        media_id=data['graphql']['user']['edge_owner_to_timeline_media']['edges'][photonum]['node']['id']
+	photocode=data['graphql']['user']['edge_owner_to_timeline_media']['edges'][photonum]['node']['shortcode']
         print(username+ "  >>> Sending like!")    
         return media_id
 
@@ -236,7 +238,7 @@ def sendlike(media_id):
                     'Sec-Fetch-Site': 'same-origin',
                     'Sec-Fetch-Mode': 'cors',
                     'Sec-Fetch-Dest': 'empty',
-                    'Referer': f'https://www.instagram.com/{usrname}/',
+                    'Referer': f'https://www.instagram.com/p/{photocode}/',
                     'Accept-Encoding': 'gzip, deflate, br',
                     'Accept-Language': 'en-US,en;q=0.9,ru;q=0.8',
                     'Cookie': f'mid={mid}; ig_did={ig_did}; shbid={shbid}; shbts={shbts}; rur={rur}; csrftoken={csrftoken}; ds_user_id={ds_user_id}; sessionid={sessionid}',
