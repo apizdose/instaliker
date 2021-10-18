@@ -1,5 +1,6 @@
-FROM python:3-slim
-COPY ./* /liker/
-WORKDIR /liker 
+FROM python:slim
+
 RUN pip install requests
-ENTRYPOINT ["python", "instaliker.py"] 
+WORKDIR /liker 
+COPY . .
+ENTRYPOINT ["python", "instaliker.py"]
