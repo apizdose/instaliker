@@ -204,7 +204,7 @@ def checkuser(username):
 	photonum=random.randint(0,3)
         media_id=data['graphql']['user']['edge_owner_to_timeline_media']['edges'][photonum]['node']['id']
 	photocode=data['graphql']['user']['edge_owner_to_timeline_media']['edges'][photonum]['node']['shortcode']
-        print(username+ "  >>> Sending like!")    
+        print(username+ f"  >>> Sending like to post > https://www.instagram.com/p/{photocode}/")    
         return media_id
 
 #################################################################################            
