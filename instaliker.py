@@ -7,18 +7,29 @@ import re
 import requests
 from datetime import datetime, timedelta
 
-loginform=input('Login:  ')
-passwordform=input('Password:  ')
+loginform=False
+passwordform=False
 spam = False
 base = input('Name of basefile (example \'basename.csv\'): ') or 'base.csv'
 counter = 0
 counterLook = 0
 XInstagramAJAX = csrftoken = ds_user_id = sessionid = ig_did = mid = ig_nrcb = shbid = shbts = rur = XIGWWWClaim = False
-XIGAppID = input('Paste XIGAppID or press enter to default: ') or "1217981644879628"
+XIGAppID = "1217981644879628"
 print('IGAppid for your version is: '+XIGAppID)
 likable = False
 
-
+if os.path.isfile('login.txt'):
+    logins={}
+    with open('login.txt','r') as file:
+        lgns = file.read().splitlines()
+        for i in lgns:
+            slic=i.split(":")
+            logins[slic[0]]=slic[1]
+            
+    loginbase = [(k, v) for k, v in logins.items()]
+    loginform=loginbase[0][0]
+    passwordform=loginbase[0][1]
+    print(logins)
 
 #Открываем сессию и получаем куки
 #Open session
@@ -267,8 +278,10 @@ def sendlike(media_id):
 
 
 if __name__ == '__main__':
-	sessionData()
+	if not loginform:
+		raise ValueError('LOGIN REQUIRED. PLEASE FIL THE LOGINS FILE!!!')	
 
+	sessionData()
 	time.sleep(30)
 	print("LOGGED IN!")
 
