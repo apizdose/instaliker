@@ -7,9 +7,6 @@ import re
 import requests
 from datetime import datetime, timedelta
 import os
-from PIL import Image
-import glob
-import shutil
 from os import path
 import urllib.parse
 
