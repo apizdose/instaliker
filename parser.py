@@ -312,7 +312,7 @@ def pars():
                 'Sec-Fetch-Site': 'same-origin',
                 'Sec-Fetch-Mode': 'cors',
                 'Sec-Fetch-Dest': 'empty',
-                'Referer': 'https://www.instagram.com/p/shortcode/',
+                'Referer': f'https://www.instagram.com/p/{shortcode}/',
                 'Accept-Encoding': 'gzip, deflate, br',
                 'Accept-Language': 'en-US,en;q=0.9,ru;q=0.8',
                 'Cookie': f'mid={mid}; ig_did={ig_did}; csrftoken={csrftoken}; ds_user_id={ds_user_id}; sessionid={sessionid}; shbid={shbid}; shbts={shbts}; rur={rur}',
