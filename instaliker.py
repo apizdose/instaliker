@@ -6,6 +6,7 @@ import csv
 import re
 import requests
 from datetime import datetime, timedelta
+import os
 
 loginform=False
 passwordform=False
