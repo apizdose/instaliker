@@ -1,4 +1,5 @@
 import csv
+import random
 
 base=input('your base: ') or 'base'
    
@@ -52,7 +53,7 @@ for i in nolist:
 for i in mybase:
     if 'raja' in i or 'rama' in i:
         mybase.remove(i)
-
+random.shuffle(mybase)
 with open(f'{base}_redacted.csv', mode='a',newline='') as mkf:
     mkwriter = csv.writer(mkf)
     for i in mybase:
