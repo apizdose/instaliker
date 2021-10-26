@@ -29,6 +29,16 @@ XInstagramAJAX = csrftoken = ds_user_id = sessionid = ig_did = mid = ig_nrcb = s
 XIGAppID = input('Paste XIGAppID or press enter to default: ') or "1217981644879628"
 print('IGAppid for your version is: '+XIGAppID)
 
+arabsym=[]
+for n in range(0x600,0x6FF+1):
+    c = chr(n)
+    #print(str(c))
+    arabsym.append(str(c))
+    
+for n in range(0x900,0x97F+1):
+    c = chr(n)
+    #print(str(c))
+    arabsym.append(str(c))    
 
 
     
@@ -336,9 +346,13 @@ def pars():
             mkwriter = csv.writer(mkf)
             
             for user in data['data']['shortcode_media']['edge_liked_by']['edges']:
+                eulead=True
+                for i in arabsym:
+                    if i in user['node']['full_name']:
+                        eulead=False
                 mkuser_private = user['node']['is_private']
-                if not mkuser_private:
-                    mkwriter.writerow([user['node']['username']])
+                if not mkuser_private and eulead:
+                    mkwriter.writerow([user['node']['username'], user['node']['full_name']])
                     print(user['node']['username']+'------------opened--------saved')
                 else:
                     print(user['node']['username']+'------------closed')
