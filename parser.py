@@ -346,12 +346,10 @@ def pars():
             mkwriter = csv.writer(mkf)
             
             for user in data['data']['shortcode_media']['edge_liked_by']['edges']:
-                eulead=True
-                for i in arabsym:
-                    if i in user['node']['full_name']:
-                        eulead=False
+                
+                
                 mkuser_private = user['node']['is_private']
-                if not mkuser_private and eulead:
+                if not mkuser_private:
                     mkwriter.writerow([user['node']['username'], user['node']['full_name']])
                     print(user['node']['username']+'------------opened--------saved')
                 else:
