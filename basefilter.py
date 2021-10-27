@@ -86,7 +86,7 @@ print('\nStarting filtering by name (Can take a long time...)')
     
 for i in range(int(times)):
     filter()
-    print(f"Filtered {1}/{int(times)} cycles.")
+    print(f"Filtered {i}/{int(times)} cycles.")
 
     
 writetobase()    
