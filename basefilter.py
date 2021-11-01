@@ -41,7 +41,7 @@ with open("blacklist.txt", "r", encoding='utf-8') as file:
         tname = i.lower().replace("\n", "")
         if len(tname)>=5:
             blacklist.append(tname)
-        if len(tname)<5 and >3:
+        if len(tname)<5 and len(tname)>3:
             for i in symarr:
                 addname = tname+i
                 nameadd = i+tname
